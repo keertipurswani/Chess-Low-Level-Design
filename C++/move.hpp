@@ -14,8 +14,8 @@ private:
     bool isValidMove;
 
 public:
-    Move(Player* pPlayer, Spot* pStartSpot, Spot* pEndSpot) : 
-        player(pPlayer), start(pStartSpot), end(pEndSpot) {
+    Move(Player* pPlayer, Spot* pStartSpot, Spot* pEndSpot, Piece* piece) : 
+        player(pPlayer), start(pStartSpot), end(pEndSpot), pieceMoved(piece) {
             pieceKilled = nullptr;
         }
     bool isCastlingMove();

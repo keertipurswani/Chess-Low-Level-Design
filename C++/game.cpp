@@ -32,7 +32,7 @@ bool Game::processMove(Player *currPlayer, string start, string end)
     Spot *endSpot = board->getSpot(endmove.first, endmove.second);
     Piece *currPiece = startSpot->getPiece();
 
-    Move *move = new Move(currPlayer, startSpot, endSpot);
+    Move *move = new Move(currPlayer, startSpot, endSpot, currPiece);
 
     if (currPiece->canMove(board, startSpot, endSpot))
     {
@@ -67,6 +67,7 @@ void Game::undo()
         lastMove->getPieceMoved()->move(board, lastMove->getEndSpot(), lastMove->getStartSpot());
         lastMove->getStartSpot()->setPiece(lastMove->getPieceMoved());
         lastMove->getEndSpot()->setPiece(lastMove->getPieceKilled());
+        board->displayBoard();
     }
 }
 
