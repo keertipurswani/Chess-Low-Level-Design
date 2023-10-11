@@ -59,14 +59,8 @@ public class Game {
 
     public void undo() {
         currMoveIndex--;
-        System.out.println(currMoveIndex);
-        System.out.println(movesPlayed.size());
         Move lastMove = movesPlayed.get(currMoveIndex);
         if (lastMove != null) {
-            System.out.println("got piece");
-            if (lastMove.getPieceMoved() != null) {
-                System.out.println("got the last piece");
-            }
             lastMove.getPieceMoved().move(board, lastMove.getEndSpot(), lastMove.getStartSpot());
             lastMove.getStartSpot().setPiece(lastMove.getPieceMoved());
             lastMove.getEndSpot().setPiece(lastMove.getPieceKilled());
@@ -75,6 +69,7 @@ public class Game {
     }
 
     public void redo() {
+        //Perform redo just like undo
         currMoveIndex++;
     }
 }

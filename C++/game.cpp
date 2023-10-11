@@ -55,15 +55,9 @@ bool Game::processMove(Player *currPlayer, string start, string end)
 void Game::undo()
 {
     currMoveIndex--;
-    cout << currMoveIndex << endl;
-    cout<<movesPlayed.size()<<endl;
     Move *lastMove = movesPlayed[currMoveIndex];
     if (lastMove)
     {
-        cout<<"got piece"<<endl;
-        if(lastMove->getPieceMoved()){
-            cout<<"got the last piece"<<endl;
-        }
         lastMove->getPieceMoved()->move(board, lastMove->getEndSpot(), lastMove->getStartSpot());
         lastMove->getStartSpot()->setPiece(lastMove->getPieceMoved());
         lastMove->getEndSpot()->setPiece(lastMove->getPieceKilled());
@@ -73,5 +67,6 @@ void Game::undo()
 
 void Game::redo()
 {
+    //Perform redo just like undo
     currMoveIndex++;
 }
